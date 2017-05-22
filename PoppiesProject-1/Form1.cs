@@ -13,8 +13,15 @@ namespace PoppiesProject_1
 {
     public partial class Form1 : Form
     {
-        string conn_string = "Provider = Microsoft.ACE.OLEDB.12.0;" +
-                @"Data Source= C:\Users\Samuel\Desktop\Poppies Database_090517.accdb";
+        OleDbConnectionStringBuilder builder = new OleDbConnectionStringBuilder();
+        builder.ConnectionString = @"Data Source=C:C:\Users\Samuel\Desktop\Poppies Database_090517.accdb";
+         
+        builder.Add("Provider", "Microsoft.ACE.Oledb.12.0");
+        
+       
+
+        //string conn_string = "Provider = Microsoft.ACE.OLEDB.12.0;" +
+                //@"Data Source= C:\Users\Samuel\Desktop\Poppies Database_090517.accdb";
         string error_msg = "You are not connected to the Database";
         string q = "";
         OleDbConnection conn = null;
@@ -33,7 +40,7 @@ namespace PoppiesProject_1
         {
             try
             {
-                conn = new OleDbConnection(conn_string);
+                conn = new OleDbConnection(builder);
                 conn.Open();
                 disconnectToolStripMenuItem.Enabled = true;
                 connectToolStripMenuItem.Enabled = false;
@@ -52,6 +59,7 @@ namespace PoppiesProject_1
                 conn.Close();
                 disconnectToolStripMenuItem.Enabled = false;
                 connectToolStripMenuItem.Enabled = true;
+                MessageBox.Show("Database disconnected");
             }
 
             catch (Exception ex) { MessageBox.Show(ex.Message);
@@ -103,6 +111,11 @@ namespace PoppiesProject_1
             this.Cursor = Cursors.WaitCursor;
             run_Query();
             this.Cursor = Cursors.Default; 
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            disconnectToolStripMenuItem.PerformClick();
         }
     }
 }
