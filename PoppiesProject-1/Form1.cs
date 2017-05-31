@@ -21,7 +21,7 @@ namespace PoppiesProject_1
        
 
         //string conn_string = "Provider = Microsoft.ACE.OLEDB.12.0;" +
-                //@"Data Source= C:\Users\Samuel\Desktop\Poppies Database_090517.accdb";
+                //@"Data Source= C:\Users\Samuel\Desktop\Poppies Database_090517.accdb123";
         string error_msg = "You are not connected to the Database";
         string q = "";
         OleDbConnection conn = null;
