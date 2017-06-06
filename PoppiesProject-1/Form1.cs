@@ -44,7 +44,7 @@ namespace PoppiesProject_1
                 conn.Open();
                 disconnectToolStripMenuItem.Enabled = true;
                 connectToolStripMenuItem.Enabled = false;
-                MessageBox.Show("Database connected");
+                MessageBox.Show("Database connected!");
 
 
             }
@@ -59,7 +59,7 @@ namespace PoppiesProject_1
                 conn.Close();
                 disconnectToolStripMenuItem.Enabled = false;
                 connectToolStripMenuItem.Enabled = true;
-                MessageBox.Show("Database disconnected");
+                MessageBox.Show("Database disconnected!");
             }
 
             catch (Exception ex) { MessageBox.Show(ex.Message);
